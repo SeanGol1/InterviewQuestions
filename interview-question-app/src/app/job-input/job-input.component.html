@@ -1,12 +1,39 @@
 <div class="job-input-container">
-  <h2>Paste Job Description</h2>
-  
-  <textarea 
-    [(ngModel)]="jobDescription"
-    placeholder="Paste your job application or job description here..."
-    rows="12"
-    class="job-textarea"
-  ></textarea>
+  <h2 class="title">Paste Job Description</h2>
 
-  <button (click)="onSubmit()">Submit</button>
+  <textarea [(ngModel)]="jobDescription" placeholder="Paste your job application or job description here..." rows="12"
+    class="job-textarea"></textarea>
+
+  <button (click)="onSubmitJob()" class="submit-btn">Submit Job</button>
 </div>
+
+<!-- <div *ngIf="loading" class="loading-text">Generating questions...</div> -->
+
+<div *ngIf="questions.length" class="job-input-container">
+  <ul class="questions-list">
+    <li *ngFor="let q of questions" class="question-item">
+      <p class="question-text">{{ q.question }}</p>
+      <textarea [(ngModel)]="q.answer" class="answer-textarea" placeholder="Your answer..."></textarea>
+
+      <div *ngIf="q.score !== undefined" class="grading">
+        <p [ngClass]="{
+  'high': q.score >= 8,
+  'medium': q.score >= 5 && q.score < 8,
+  'low': q.score < 5
+}"><strong>Score:</strong> {{ q.score }}/10</p>
+        <p><strong>Feedback:</strong> {{ q.feedback }}</p>
+      </div>
+    </li>
+  </ul>
+
+  <!-- <div *ngIf="loading" class="loading-text">Generating Answers...</div> -->
+  <button (click)="onSubmitAnswers()" class="submit-btn" *ngIf="questions.length">Submit Answers</button>
+
+</div>
+
+<div *ngIf="loading" class="loading-container">
+  <div class="spinner"></div>
+  <span class="loading-text">Generating ...</span>
+</div>
+
+

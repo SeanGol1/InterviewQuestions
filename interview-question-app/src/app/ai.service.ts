@@ -16,4 +16,8 @@ export class AiService {
       jobDescription: jobDescription
     });
   }
+
+  submitAnswers(data: { question: string; answer: string }[]) {
+    return this.http.post('https://localhost:7052/api/openai/grade-answers', data);
+  }
 }
