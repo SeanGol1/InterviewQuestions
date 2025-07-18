@@ -1,0 +1,14 @@
+.job-input-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.job-textarea {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  resize: vertical;
+  margin-bottom: 20px;
+}

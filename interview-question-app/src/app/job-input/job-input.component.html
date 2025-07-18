@@ -1,0 +1,12 @@
+<div class="job-input-container">
+  <h2>Paste Job Description</h2>
+  
+  <textarea 
+    [(ngModel)]="jobDescription"
+    placeholder="Paste your job application or job description here..."
+    rows="12"
+    class="job-textarea"
+  ></textarea>
+
+  <button (click)="onSubmit()">Submit</button>
+</div>
