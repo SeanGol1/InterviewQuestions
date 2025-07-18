@@ -7,17 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class AiService {
 
-  private apiUrl = 'https://localhost:5001/api/openai/generate-questions';
+  private apiUrl = 'https://interviewquestiongenerator-g7bzexepc0beewf9.canadacentral-01.azurewebsites.net/api/openai/';
 
   constructor(private http: HttpClient) {}
 
   generateQuestions(jobDescription: string): Observable<any> { 
-    return this.http.post<any>('https://localhost:7052/api/openai/generate-questions', {
+    return this.http.post<any>(this.apiUrl+'generate-questions', {
       jobDescription: jobDescription
     });
   }
 
   submitAnswers(data: { question: string; answer: string }[]) {
-    return this.http.post('https://localhost:7052/api/openai/grade-answers', data);
+    return this.http.post(this.apiUrl+'grade-answers', data);
   }
 }

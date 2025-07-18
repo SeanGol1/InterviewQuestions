@@ -5,9 +5,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
+    //https://jolly-mud-0e0bc261e.2.azurestaticapps.net/
     options.AddDefaultPolicy(policy =>
     {
         policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("https://jolly-mud-0e0bc261e.2.azurestaticapps.net/")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
